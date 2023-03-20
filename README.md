@@ -1,4 +1,4 @@
-# TikTok SDK Integration Documentation
+# Cordova Plugin TikTok SDK
 
 ## Table of Contents
 
