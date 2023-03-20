@@ -1,0 +1,36 @@
+{
+    "name": "cordova-plugin-tiktok-sdk",
+    "version": "1.0.0",
+    "description": "Cordova plugin for the TikTok SDK",
+    "cordova": {
+      "id": "cordova-plugin-tiktok-sdk",
+      "platforms": [
+        "android"
+      ]
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/alialfredji/cordova-plugin-tiktok-sdk.git"
+    },
+    "keywords": [
+      "cordova",
+      "tiktok",
+      "sdk",
+      "plugin"
+    ],
+    "author": "Ali Alfredji <alfredjiali@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/alialfredji/cordova-plugin-tiktok-sdk/issues"
+    },
+    "homepage": "https://github.com/alialfredji/cordova-plugin-tiktok-sdk",
+    "dependencies": {},
+    "devDependencies": {
+      "cordova": "^9.0.0"
+    },
+    "engines": {
+      "cordovaDependencies": {
+        "cordova-android": ">=9.0.0"
+      }
+    }
+  }

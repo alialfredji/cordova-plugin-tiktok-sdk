@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-tiktok-sdk"
+        version="1.0.0">
+
+    <name>TikTokSDKPlugin</name>
+    <description>Cordova plugin for TikTok SDK</description>
+    <license>MIT</license>
+    <keywords>cordova,tiktok,sdk</keywords>
+
+    <preference name="TIKTOK_CLIENT_KEY" />
+
+    <js-module name="TikTokSDKPlugin" src="www/TikTokSDKPlugin.js">
+        <clobbers target="cordova.plugins.TikTokSDKPlugin" />
+    </js-module>
+
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="TikTokSDKPlugin">
+                <param name="ios-package" value="TikTokSDKPlugin" />
+            </feature>
+        </config-file>
+        <config-file parent="LSApplicationQueriesSchemes" target="*-Info.plist">
+            <array>
+                <string>tiktokopensdk</string>
+                <string>tiktoksharesdk</string>
+                <string>snssdk1180</string>
+                <string>snssdk1233</string>
+            </array>
+        </config-file>
+        <config-file parent="TikTokAppID" target="*-Info.plist">
+            <string>$TIKTOK_CLIENT_KEY</string>
+        </config-file>
+        <config-file parent="CFBundleURLTypes" target="*-Info.plist">
+            <array>
+                <dict>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>$TIKTOK_CLIENT_KEY</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>
+        <podspec>
+            <config>
+                <source url="https://cdn.cocoapods.org/" />
+            </config>
+            <pods use-frameworks="true">
+                <pod name="TikTokOpenSDK" spec="~&gt; 5.0.14" />
+            </pods>
+        </podspec>
+        <framework src="WebKit.framework" />
+        <framework src="Security.framework" />
+        <header-file src="src/ios/AppDelegate+TikTokSDKPlugin.h" />
+        <source-file src="src/ios/AppDelegate+TikTokSDKPlugin.m" />
+        <header-file src="src/ios/TikTokSDKPlugin.h" />
+        <source-file src="src/ios/TikTokSDKPlugin.m" />
+    </platform>
+
+    <platform name="android">
+        <config-file target="./res/values/strings.xml" parent="/resources">
+            <string name="TikTokAppID">$TIKTOK_CLIENT_KEY</string>
+        </config-file>
+        <config-file target="config.xml" parent="/*">
+            <feature name="TikTokSDKPlugin">
+                <param name="android-package" value="com.example.tiktoksdkplugin.TikTokSDKPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <queries>
+                <package android:name="com.zhiliaoapp.musically" />
+                <package android:name="com.ss.android.ugc.trill" />
+            </queries>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity
+                android:name="com.example.tiktoksdkplugin.TikTokEntryActivity"
+                android:exported="true">
+            </activity>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver
+                android:name="com.example.tiktoksdkplugin.TikTokAuthBroadcastReceiver"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="com.example.tiktoksdkplugin.ACTION_AUTHORIZATION_RESPONSE" />
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+        <framework src="src/android/build-extras.gradle" custom="true" type="gradleReference" />
+        <source-file src="src/android/TikTokSDKPlugin.java" target-dir="src/com/example/tiktoksdkplugin" />
+        <source-file src="src/android/TikTokEntryActivity.java" target-dir="src/com/example/tiktoksdkplugin" />
+        <source-file src="src/android/TikTokAuthBroadcastReceiver.java" target-dir="src/com/example/tiktoksdkplugin" />
+    </platform>
+</plugin>
