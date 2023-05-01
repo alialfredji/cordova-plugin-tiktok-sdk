@@ -10,12 +10,12 @@
 
 ## Installation
 
-**Important:** Ensure that you have your `clientId` from your [TikTok Dev Console](https://developers.tiktok.com/apps/).
+**Important:** Ensure that you have your `Client key` from your [TikTok Dev Console](https://developers.tiktok.com/apps/).
 
 To install the Cordova plugin for TikTok SDK, execute the following command:
 
 ```bash
-cordova plugin add cordova-plugin-tiktok-sdk --variable TIKTOK_CLIENT_ID="xxxx"
+cordova plugin add cordova-plugin-tiktok-sdk --variable TIKTOK_CLIENT_KEY="xxxx"
 ```
 
 ## Usage
